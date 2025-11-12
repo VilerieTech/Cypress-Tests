@@ -1,0 +1,12 @@
+// {
+//   "include": ["./node_modules/cypress", "cypress/**/*.js"]
+// }
+
+{
+  "compilerOptions": {
+    "target": "es6",
+    "baseUrl": "./",
+    "types": ["cypress"]
+  },
+  "include": ["cypress/**/*.js"]
+}

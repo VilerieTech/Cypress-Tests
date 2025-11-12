@@ -1,0 +1,39 @@
+{
+  "validUser": {
+    "firstName": "Test",
+    "lastName": "User",
+    "fullName": "Test User",
+    "address": "123 Test Street",
+    "city": "Test City",
+    "state": "TS",
+    "zipCode": "90210",
+    "phoneNumber": "5551234567",
+    "ssn": "987654321",
+    "username": "Tester",
+    "validEmail": "user@mail.com"
+  },
+
+  "invalidUser": {
+    "firstName": "1",
+    "lastName": "344",
+    "emptyFullName": "",
+    "invalidFullName": "T3st Us3r",
+    "address": "123 Test Street",
+    "city": "1",
+    "emptyCity": "",
+    "state": "12",
+    "emptyState": "",
+    "zipCode": "agshdoo",
+    "emptyZipCode": "",
+    "phoneNumber": "djdjis",
+    "emptyPhoneNumber": "",
+    "ssn": "llddjd",
+    "emptySsn": "",
+    "username": "@dm!n",
+    "emptyUsername": "",
+    "invalidEmail": "usermail.com",
+    "emptyEmail": "",
+    "emailInUse": "user@mail.com",
+    "emptyPassword": ""
+  }
+}
