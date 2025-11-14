@@ -1,4 +1,14 @@
+# dependency folder
+node_modules/
+
+# environment variables
 .env
-cypress.config.js
-package-lock.json
-package.json
+
+# Cypress artifacts
+cypress/reports/
+cypress/screenshots/
+cypress/videos/
+mochawesome.json
+
+# OS/System files
+.DS_Store
