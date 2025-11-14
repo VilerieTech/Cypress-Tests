@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-14T09:16:20.720Z",
+    "end": "2025-11-14T09:16:38.773Z",
+    "duration": 18053,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "005d2277-ecfe-4230-8383-6122eddc42d2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\registration.cy.js",
+      "file": "cypress\\e2e\\registration.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2446fb0d-0d5e-4361-9923-4a46836e9461",
+          "title": "Login functionality tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify user can login succesfully using valid credentials",
+              "fullTitle": "Login functionality tests Verify user can login succesfully using valid credentials",
+              "timedOut": null,
+              "duration": 13834,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const register = new _registrationPage.default();\nregister.clickRegisterButton();\nregister.enterFirstName(\"Test\");\nregister.enterLastName(\"User\");\nregister.enterAddress(\"1 test address\");\nregister.enterCity(\"city\");\nregister.enterState(\"state\");\nregister.enterZipcode(\"1234567\");\nregister.enterPhoneNumber(\"12345687654\");\nregister.enterSsn(\"123456789\");\nregister.enterUserName(\"tester\");\nregister.enterPassword(Cypress.env('PASSWORD'));\nregister.confirmPassword(Cypress.env('PASSWORD'));\nregister.clickSubmitButton();\n// cy.wait(10000)\nregister.checkbox();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#terms-of-service-iframe`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#terms-of-service-iframe`, but never found it.\n    at getIframeBody (webpack://david-cypress/./cypress/pages/registrationPage.js:2:14)\n    at registrationPage.checkbox (webpack://david-cypress/./cypress/pages/registrationPage.js:64:8)\n    at Context.eval (webpack://david-cypress/./cypress/e2e/registration.cy.js:26:13)",
+                "diff": null
+              },
+              "uuid": "ec2d1fcf-ad6c-4882-9174-df41bb9cc327",
+              "parentUUID": "2446fb0d-0d5e-4361-9923-4a46836e9461",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ec2d1fcf-ad6c-4882-9174-df41bb9cc327"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 13834,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-14T09:15:56.548Z",
+    "end": "2025-11-14T09:16:16.860Z",
+    "duration": 20312,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d44071a5-941e-4813-970c-78e9aaf25431",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login.cy.js",
+      "file": "cypress\\e2e\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d5bde3bd-21fa-484f-9403-25787fc34fbe",
+          "title": "Login functionality test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should login successfully when using valid credentials",
+              "fullTitle": "Login functionality test should login successfully when using valid credentials",
+              "timedOut": null,
+              "duration": 4973,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.enterEmail(UserData.validEmail);\nlogin.enterPassword(Cypress.env('PASSWORD'));\nlogin.clickSigninButton();",
+              "err": {},
+              "uuid": "1ec47cc5-43b3-4fd7-a012-1a49841180f2",
+              "parentUUID": "d5bde3bd-21fa-484f-9403-25787fc34fbe",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not login when entering invalid email",
+              "fullTitle": "Login functionality test should not login when entering invalid email",
+              "timedOut": null,
+              "duration": 3521,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.enterEmail(invalidData.invalidEmail);\nlogin.enterPassword(Cypress.env('PASSWORD'));\nlogin.clickSigninButton();",
+              "err": {},
+              "uuid": "f2eb229a-350a-4a2b-994e-e3df889feeeb",
+              "parentUUID": "d5bde3bd-21fa-484f-9403-25787fc34fbe",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not login when email field is empty",
+              "fullTitle": "Login functionality test should not login when email field is empty",
+              "timedOut": null,
+              "duration": 2474,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.enterPassword(Cypress.env('PASSWORD'));\nlogin.clickSigninButton();\nlogin.assertEmptyEmail();",
+              "err": {},
+              "uuid": "fa04d013-49f7-490a-88d6-53c00cef5101",
+              "parentUUID": "d5bde3bd-21fa-484f-9403-25787fc34fbe",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not login when entering incorrect password",
+              "fullTitle": "Login functionality test should not login when entering incorrect password",
+              "timedOut": null,
+              "duration": 3273,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.enterEmail(UserData.validEmail);\nlogin.enterPassword(Cypress.env('INVALID_PASSWORD'));\nlogin.clickSigninButton();",
+              "err": {},
+              "uuid": "af26dd4b-d785-4133-9497-0554f2bd946e",
+              "parentUUID": "d5bde3bd-21fa-484f-9403-25787fc34fbe",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not login when password field is empty",
+              "fullTitle": "Login functionality test should not login when password field is empty",
+              "timedOut": null,
+              "duration": 2511,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "login.enterEmail(UserData.validEmail);\nlogin.clickSigninButton();\nlogin.assertEmptyPassword();",
+              "err": {},
+              "uuid": "83dccba7-82ee-4059-a61a-6c02bcd36950",
+              "parentUUID": "d5bde3bd-21fa-484f-9403-25787fc34fbe",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1ec47cc5-43b3-4fd7-a012-1a49841180f2",
+            "f2eb229a-350a-4a2b-994e-e3df889feeeb",
+            "fa04d013-49f7-490a-88d6-53c00cef5101",
+            "af26dd4b-d785-4133-9497-0554f2bd946e",
+            "83dccba7-82ee-4059-a61a-6c02bcd36950"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16752,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

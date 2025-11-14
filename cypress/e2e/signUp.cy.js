@@ -41,7 +41,6 @@ describe('signUp functionality tests', () => {
 
     it('should not sign up when full name is left empty', () => {
         site.clickSignUpButton()
-        register.enterFullName(invalidData.emptyFullName)
         register.enterUserName(userData.username)
         register.enterPhoneNumber(userData.phoneNumber)
         register.enterEmail(userData.validEmail)
@@ -67,7 +66,6 @@ describe('signUp functionality tests', () => {
         register.enterFullName(userData.fullName)
         register.enterUserName(userData.username)
         register.enterPhoneNumber(userData.phoneNumber)
-        register.enterEmail(invalidData.emptyEmail)
         register.enterPassword(Cypress.env('PASSWORD'))
         register.confirmPassword(Cypress.env('PASSWORD'))
         register.clickSubmitButton()
@@ -91,7 +89,6 @@ describe('signUp functionality tests', () => {
         register.enterUserName(userData.username)
         register.enterPhoneNumber(userData.phoneNumber)
         register.enterEmail(userData.validEmail)
-        register.enterPassword(invalidData.emptyPassword)
         register.confirmPassword(Cypress.env('PASSWORD'))
         register.clickSubmitButton()
         register.assertEmptyPassword()
@@ -128,7 +125,6 @@ describe('signUp functionality tests', () => {
         register.enterPhoneNumber(userData.phoneNumber)
         register.enterEmail(userData.validEmail)
         register.enterPassword(Cypress.env('PASSWORD'))
-        register.confirmPassword(invalidData.emptyPassword)
         register.clickSubmitButton()
     })
 
