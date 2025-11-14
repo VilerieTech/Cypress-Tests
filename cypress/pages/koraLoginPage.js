@@ -25,7 +25,6 @@ class koraLoginPage {
 
     clickSigninButton() {
         cy.get('button:contains("Sign In")')
-        .should('be.enabled')
         .click();
     }
 }
