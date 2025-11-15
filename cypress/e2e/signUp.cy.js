@@ -1,10 +1,10 @@
-import koraDashboardPage from "../pages/koraDashboardPage";
-import koraSignUpPage from "../pages/koraSignUpPage";
+import alphapayDashboardPage from "../pages/alphapayDashboardPage";
+import alphapaySignUpPage from "../pages/alphapaySignUpPage";
 
 describe('signUp functionality tests', () => {
 
-     const site = new koraDashboardPage(); 
-     const register = new koraSignUpPage();
+     const site = new alphapayDashboardPage(); 
+     const register = new alphapaySignUpPage();
      let userData;
      let invalidData;
      //const password = Cypress.env('PASSWORD')
@@ -28,7 +28,7 @@ describe('signUp functionality tests', () => {
         register.assertSignup()
     })
 
-    it('should not sign up when invalid full name is entered'), () => {
+    it('should not sign up when invalid full name is entered', () => {
         site.clickSignUpButton()
         register.enterFullName(invalidData.invalidFullName)
         register.enterUserName(userData.username)
@@ -37,7 +37,7 @@ describe('signUp functionality tests', () => {
         register.enterPassword(Cypress.env('PASSWORD'))
         register.confirmPassword(Cypress.env('PASSWORD'))
         register.clickSubmitButton()
-    }
+    })
 
     it('should not sign up when full name is left empty', () => {
         site.clickSignUpButton()

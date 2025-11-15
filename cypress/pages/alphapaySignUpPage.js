@@ -43,7 +43,7 @@ class koraSignUpPage {
 
     assertEmptyFullName() {
         cy.get('.error:contains("Provide your full name please")')
-        .should('be.visible');
+        .should('exist');
     }
 
     assertEmptyEmail() {

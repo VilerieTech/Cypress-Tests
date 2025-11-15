@@ -1,9 +1,9 @@
-import koraDashboardPage from "../pages/koraDashboardPage"
-import koraLoginPage from "../pages/koraLoginPage";
+import alphapayDashboardPage from "../pages/alphapayDashboardPage"
+import alphapayLoginPage from "../pages/alphapayLoginPage";
 
 describe('Login functionality test', () => {
-    const site = new koraDashboardPage();
-    const login = new koraLoginPage();
+    const site = new alphapayDashboardPage();
+    const login = new alphapayLoginPage();
      let UserData;
      let invalidData;
 
