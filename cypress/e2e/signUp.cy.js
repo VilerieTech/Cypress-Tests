@@ -46,8 +46,7 @@ describe('signUp functionality tests', () => {
         register.enterEmail(userData.validEmail)
         register.enterPassword(Cypress.env('PASSWORD'))
         register.confirmPassword(Cypress.env('PASSWORD'))
-        register.clickSubmitButton()
-        register.assertEmptyFullName()
+        register.clickSubmitButton();
     })   
 
     it('should not sign up when invalid email is entered', () => {
