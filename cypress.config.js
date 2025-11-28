@@ -1,62 +1,5 @@
-// // // const { defineConfig } = require("cypress");
-
-// // // module.exports = defineConfig({
-// // //   e2e: {
-// // //     setupNodeEvents(on, config) {
-// // //       // implement node event listeners here
-// // //     },
-// // //   },
-// // // });
-
-// // require('dotenv').config();
-// // const { defineConfig } = require('cypress');
-
-// // module.exports = defineConfig({
-// //   reporter: "mochawesome",
-// //   reporterOptions: {
-// //     reportDir: "cypress/reports",
-// //     overwrite: false,
-// //     html: true,
-// //     json: true
-// //   },
-
-// //   e2e: {
-// //     baseUrl: 'https://9ldgrpnq-3000.uks1.devtunnels.ms',
-// //     video: true,
-// //     screenshotsFolder: "cypress/screenshots",
-// //     videosFolder: "cypress/videos",
-// //     setupNodeEvents(on, config) {
-// //       config.env.BASE_URL = process.env.BASE_URL;
-// //       config.env.NAME = process.env.USER_NAME;
-// //       config.env.PASSWORD = process.env.USER_PASSWORD;
-// //       config.env.OTP = process.env.OTP;
-// //       config.env.EMAIL = process.env.USER_EMAIL;
-// //       config.env.UNVERIFIED_EMAIL = process.env.UNVERIFIED_EMAIL;
-// //       config.env.SSN = process.env.USER_SSN;
-// //       config.env.SHORT_PASSWORD = process.env.SHORT_PASSWORD;
-// //       config.env.INVALID_PASSWORD = process.env.INVALID_PASSWORD;
-// //       const env = config.env.configFile || 'dev';
-// //       const path = `.env.${env}`;
-// //       dotenv.config({ path });
-      
-// //       // CRITICAL FIX: Set the baseUrl from the environment variable
-// //       if (process.env.CYPRESS_BASE_URL) {
-// //           config.baseUrl = process.env.CYPRESS_BASE_URL;
-// //       }
-
-// //       // Mapping other variables:
-// //       config.env.EMAIL = process.env.USER_EMAIL;
-// //       // ... other mappings ...
-
-// //       console.log(`Cypress is running against: ${config.baseUrl}`);
-// //       return config;
-// //     },
-// //   }
-// // });
-
-// const { defineConfig } = require('cypress');
-// const dotenv = require('dotenv'); 
-
+// const { defineConfig } = require("cypress");
+// const dotenv = require("dotenv");
 
 // module.exports = defineConfig({
 //   reporter: "mochawesome",
@@ -64,93 +7,81 @@
 //     reportDir: "cypress/reports",
 //     overwrite: false,
 //     html: true,
-//     json: true
+//     json: true,
 //   },
 
+//   supportFile: "cypress/support/e2e.js",
+
 //   e2e: {
-//     // This is the static fallback URL.
-//     baseUrl: 'https://9ldgrpnq-3000.uks1.devtunnels.ms',
-//     video: true,
-//     screenshotsFolder: "cypress/screenshots",
-//     videosFolder: "cypress/videos",
-
 //     setupNodeEvents(on, config) {
-      
-//       const env = config.env.configFile || 'dev';
-//       const path = `.env.${env}`;
-  
-//       dotenv.config({ path }); 
+//       const envName = config.env.configFile || "dev";
+//       const envPath = `.env.${envName}`;
+//       dotenv.config({ path: envPath });
 
-//       config.env.BASE_URL = process.env.BASE_URL;
-//       config.env.NAME = process.env.USER_NAME;
-//       config.env.PASSWORD = process.env.USER_PASSWORD;
-//       config.env.OTP = process.env.OTP;
-//       config.env.EMAIL = process.env.USER_EMAIL;
-//       config.env.UNVERIFIED_EMAIL = process.env.UNVERIFIED_EMAIL;
-//       config.env.SSN = process.env.USER_SSN;
-//       config.env.SHORT_PASSWORD = process.env.SHORT_PASSWORD;
-//       config.env.INVALID_PASSWORD = process.env.INVALID_PASSWORD;
+//       config.env = {
+//         ...config.env,
+//         BASE_URL: process.env.BASE_URL,
+//         EMAIL: process.env.USER_EMAIL,
+//         PASSWORD: process.env.USER_PASSWORD,
+//         INVALID_PASSWORD: process.env.INVALID_PASSWORD,
+//         UNVERIFIED_EMAIL: process.env.UNVERIFIED_EMAIL,
+//         OTP: process.env.OTP,
+//         NAME: process.env.USER_NAME,
+//         SSN: process.env.USER_SSN,
+//         SHORT_PASSWORD: process.env.SHORT_PASSWORD,
 
+//         MAILSLURP_API_KEY: process.env.MAILSLURP_API_KEY,
+//       };
 
-//       // STEP 3: DYNAMIC BASE URL (Overwrite the static baseUrl if provided)
-//       if (process.env.CYPRESS_BASE_URL) {
-//           config.baseUrl = process.env.CYPRESS_BASE_URL;
-//       }
+//       config.baseUrl = process.env.BASE_URL;
 
-//       console.log(`Cypress is running against: ${config.baseUrl}`);
+//       console.log("Loaded ENV File:", envPath);
+//       console.log("Cypress Running Against:", config.baseUrl);
+
 //       return config;
 //     },
-//   }
+//   },
 // });
-
-const { defineConfig } = require('cypress');
-const dotenv = require('dotenv'); 
+const { defineConfig } = require("cypress");
+const dotenv = require("dotenv");
 
 module.exports = defineConfig({
   reporter: "mochawesome",
+
   reporterOptions: {
     reportDir: "cypress/reports",
     overwrite: false,
     html: true,
-    json: true
+    json: true,
   },
 
   e2e: {
-    baseUrl: 'https://9ldgrpnq-3000.uks1.devtunnels.ms',
-    video: true,
-    screenshotsFolder: "cypress/screenshots",
-    videosFolder: "cypress/videos",
+    supportFile: "cypress/support/e2e.js",   // ✅ moved here (correct)
 
     setupNodeEvents(on, config) {
-      
-      // 1. --- CRITICAL FIX: LOAD THE FILE FIRST ---
-      // Determine environment (defaults to 'dev')
-      const env = config.env.configFile || 'dev';
-      const path = `.env.${env}`;
-      
-      // THIS MUST HAPPEN FIRST to populate process.env
-      dotenv.config({ path }); 
-      
-      // 2. --- MAPPING: MAP LOADED VARIABLES INTO CYPRESS ---
-      // Now that process.env is populated, we map the values safely.
-      config.env.BASE_URL = process.env.BASE_URL;
-      config.env.NAME = process.env.USER_NAME;
-      config.env.PASSWORD = process.env.USER_PASSWORD;
-      config.env.OTP = process.env.OTP;
-      config.env.EMAIL = process.env.USER_EMAIL;
-      config.env.UNVERIFIED_EMAIL = process.env.UNVERIFIED_EMAIL;
-      config.env.SSN = process.env.USER_SSN;
-      config.env.SHORT_PASSWORD = process.env.SHORT_PASSWORD;
-      config.env.INVALID_PASSWORD = process.env.INVALID_PASSWORD;
+      const envName = config.env.configFile || "dev";
+      const envPath = `.env.${envName}`;
+      dotenv.config({ path: envPath });
 
+      config.env = {
+        ...config.env,
+        BASE_URL: process.env.BASE_URL,
+        EMAIL: process.env.USER_EMAIL,
+        PASSWORD: process.env.USER_PASSWORD,
+        INVALID_PASSWORD: process.env.INVALID_PASSWORD,
+        UNVERIFIED_EMAIL: process.env.UNVERIFIED_EMAIL,
+        OTP: process.env.OTP,
+        NAME: process.env.USER_NAME,
+        SSN: process.env.USER_SSN,
+        SHORT_PASSWORD: process.env.SHORT_PASSWORD,
+        MAILSLURP_API_KEY: process.env.MAILSLURP_API_KEY,
+        NEW_USER_EMAIL: process.env.NEW_USER_EMAIL,
+      };
 
-      // 3. DYNAMIC BASE URL
-      if (process.env.CYPRESS_BASE_URL) {
-          config.baseUrl = process.env.CYPRESS_BASE_URL;
-      }
+      config.baseUrl = process.env.BASE_URL;
 
-      console.log(`Cypress is running against: ${config.baseUrl}`);
       return config;
     },
-  }
+  },
 });
+

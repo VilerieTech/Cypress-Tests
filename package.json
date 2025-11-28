@@ -13,6 +13,8 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "cypress": "^15.6.0",
+    "cypress-mailslurp": "^1.11.1",
+    "mailslurp-client": "^16.0.0",
     "mochawesome": "^7.1.4",
     "mochawesome-merge": "^5.0.0",
     "mochawesome-report-generator": "^6.3.2"

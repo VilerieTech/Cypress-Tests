@@ -1,4 +1,4 @@
-describe("DELETE /user", () => {
+describe("DELETE /user", { retries: 0 }, () => {
 
   before(() => {
     cy.loginAndGetToken();
@@ -17,7 +17,7 @@ describe("DELETE /user", () => {
     });    
     })
 
-    it("Should delete the user", () => {
+    it("Should not delete an already deleted user", () => {
     cy.request({
       method: 'DELETE',
       url: 'https://9ldgrpnq-3000.uks1.devtunnels.ms/delete-user',
