@@ -16,3 +16,10 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import "cypress-mailslurp";
+import MailSlurp from "mailslurp-client";
+
+// Cypress.Commands.add("mailslurp", () => {
+//   const apiKey = Cypress.env("MAILSLURP_API_KEY");
+//   return new MailSlurp({ apiKey });
+// });
+

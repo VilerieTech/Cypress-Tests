@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "cy:dev": "cross-env ENV=dev npx cypress open",
+  "cy:staging": "cross-env ENV=staging npx cypress open",
+  "cy:prod": "cross-env ENV=prod npx cypress open",
+
+  "cy:run:dev": "cross-env ENV=dev npx cypress run",
+  "cy:run:staging": "cross-env ENV=staging npx cypress run",
+  "cy:run:prod": "cross-env ENV=prod npx cypress run"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +18,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^24.10.1",
+    "cross-env": "^10.1.0",
     "cypress": "^15.6.0",
     "cypress-mailslurp": "^1.11.1",
     "mailslurp-client": "^16.0.0",
@@ -20,6 +27,7 @@
     "mochawesome-report-generator": "^6.3.2"
   },
   "dependencies": {
+    "axios": "^1.13.2",
     "dotenv": "^17.2.3"
   }
 }

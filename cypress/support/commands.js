@@ -24,20 +24,70 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("apiLogin", (email, password) => {
+
+import MailSlurp from "mailslurp-client";
+
+// Create MailSlurp instance
+Cypress.Commands.add("mailslurp", () => {
+  const apiKey = Cypress.env("MAILSLURP_API_KEY");
+  if (!apiKey) throw new Error("Missing MAILSLURP_API_KEY in Cypress.env");
+  return new MailSlurp({ apiKey });
+});
+
+
+Cypress.Commands.add("createMailSlurpInbox", () => {
+  return cy.mailslurp()
+    .then(ms => ms.createInbox())
+    .then(inbox => {
+      Cypress.env("NEW_USER_EMAIL", inbox.emailAddress);
+      Cypress.env("INBOX_ID", inbox.id);
+
+      return inbox;
+    });
+});
+
+
+
+Cypress.Commands.add("signupViaAPI", (email, password = Cypress.env("PASSWORD"), name = Cypress.env("NAME")) => {
+  return cy.request({
+    method: "POST",
+    url: "/sign-up",
+    body: { name, email, password },
+    failonStatusCode: false
+  }).then(res => {
+    expect(res.status).to.eq(201);
+    return res.body;
+  });
+});
+
+Cypress.Commands.add("apiLogin", (email, password = Cypress.env("PASSWORD")) => {
   return cy.request({
     method: "POST",
     url: "/login",
     body: { email, password }
-  }).then((res) => {
+  }).then(res => {
     expect(res.status).to.eq(200);
-    expect(res.body).to.have.property("token");
-
-    // Save JWT for later tests
-    Cypress.env("token", res.body.token);
-
-    cy.log("JWT token saved:", res.body.token);
-    return res.body.token;
+    expect(res.body).to.have.property("Access_token");
+    const token = res.body.Access_token;
+    Cypress.env("TOKEN", token);
+    return token;
   });
 });
+
+Cypress.Commands.add("getOTP", (inboxId) => {
+  return cy.mailslurp().then(ms =>
+    ms.waitForLatestEmail(inboxId, 30000)
+      .then(email => {
+        const otp = email.body.match(/(\d{6})/)?.[1];
+        expect(otp).to.not.be.null;
+        return otp;
+      })
+  );
+});
+
+
+
+
+
+
 
